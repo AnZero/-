@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>demo</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 是为了让ie8以下的浏览器(包括ie8)支持HTML5新标签 -->
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <!-- 支持响应式 -->
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">
+            <span class="login-mini">
+					<b>A</b>LT
+				</span>
+            <span class="login-lg">
+					<b>Admin</b>LTE
+				</span>
+        </a>
+        <span class="glyphicon glyphicon-menu-hamburger zhankai"></span>
+        <nav>
+            <dl>
+                <dt><img src="imgs/user1-128x128.jpg"/></dt>
+                <dd>Alexander Pierce</dd>
+            </dl>
+            <span class="logout">退出</span>
+        </nav>
+    </header>
+    <section>
+        <aside>
+            <dl>
+                <dt><img src="imgs/user1-128x128.jpg"/></dt>
+                <dd>Alexander Pierce</dd>
+                <dd><i></i>Online</dd>
+            </dl>
+            <input type="text" placeholder="Search..." /><span class="glyphicon glyphicon-search search"></span>
+            <p>MAIN NAVIGATION</p>
+            <p>...</p>
+        </aside>
+        <div class="curinfo">
+            <p class="navbar-text">
+                <h4>用户信息</h4>
+                <span>用户名</span>
+                <span>密码</span>
+            </p>
+            <div>
+                <p>
+
+                    <span>...</span>
+                    <span>...</span>
+                </p>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!--想使用bootstrap的插件 必须依赖jQ-->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+<script>
+    //页面加载完之前 发送ajax请求 请求所有用户数据 通过forEach遍历加模板字符串拼接后渲染到页面上
+    document.ready(function() {
+        $.ajax({
+            url: '',
+            type: 'GET',
+            success: function(data) {
+                var datas = data.results
+                datas.forEach((ele, index) => {
+                    $('<div></div').html(`<p>
+														<span>${ele.name}</span>
+														<span>${ele.password}</span>
+													</p>`).appendTo($('.curinfo'));
+
+                })
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        })
+    })
+
+    //用户退出路由跳转
+    $('.logout').on('click', function() {
+        $.ajax({
+            url: '',
+            type: 'GET',
+            success: function() {
+                if (data.xx == xx) {
+                    //退出成功
+                }
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        })
+    })
+</script>
+
+</html>
